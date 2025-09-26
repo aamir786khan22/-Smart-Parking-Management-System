@@ -1,0 +1,13 @@
+# Environment variables
+smart_parking/credentials.env
+
+# Python bytecode
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Django static files (optional if collectstatic used)
+staticfiles/
+staticfiles_build/
