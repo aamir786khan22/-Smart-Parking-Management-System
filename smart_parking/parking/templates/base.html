@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Parking</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo"><a href="{% url 'home' %}">Smart Parking</a></div>
+    <div class="links">
+      <a href="{% url 'slots' %}">Slots</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'history' %}">History</a>
+        <a href="{% url 'account' %}">Account</a>
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Signup</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  {% if messages %}
+    <div class="messages">
+      {% for m in messages %}
+        <div class="msg">{{ m }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <p>© {{ now|default:2025 }} Smart Parking System</p>
+  </footer>
+</body>
+</html>
